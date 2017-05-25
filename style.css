@@ -1,0 +1,111 @@
+body {
+    background-color: black !important;
+}
+
+.title {
+    text-align: center;
+    font-size: 2em;
+    font-family: "Lobster" , sans-serif;
+    font-size: 3em;
+    margin-top: 0;
+    color: white;
+}
+.name {
+    text-align:center;
+    color: white;
+    margin-top: 0em;
+    font-family: "Russo One";
+    font-size: 2em;
+}
+.fa-flask {
+    animation-name: flask;
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes flask {
+    0% {color: chartreuse;}
+    50% {color: white;}
+    100% {color: chartreuse;}
+}
+.reaction {
+	border-color: chartreuse;
+	border-style: solid;
+	border-radius: 24px;
+	border-width: 7px;
+	background-color: black;
+	color: white;
+	text-align: left;
+	height: 2em;
+	width: 30em;
+	font-size: 24px;
+	font-family: "VT323", sans-serif;
+	padding-left: 3px;
+}
+.temp {
+	border-color: chartreuse;
+	border-style: solid;
+	border-radius: 24px;
+	border-width: 7px;
+	background-color: black;
+	color: white;
+	text-align: left;
+	height: 2em;
+	width: 5em;
+	font-size: 24px;
+	font-family: "VT323", sans-serif;
+	margin-right: 1em;
+	padding-left: 3px;
+}
+.input1 {
+	text-align: center;
+}
+#presto {
+	display: inline;
+	margin-left: 1.5em;
+	background-color: inherit;
+	font-size: 2em !important;
+	border-color: chartreuse;
+	border-style: dotted;
+	border-radius: 20px;
+	color: white;
+	width: 5em;
+	border-width: 2px;
+	font-family: "Lobster", sans-serif;
+	transition-duration: 0.5s;
+	transition-timing-function: ease-in-out;
+}
+#presto:hover {
+	transform: rotate(360deg);
+	font-size: 2.5em!important;
+	background-color: white;
+	color: black;
+}
+
+h2 {
+	text-align: center;
+}
+
+.reacts1, .prods1, .therms1, .spons1 {
+	font-family: "Lobster", sans-serif;
+	color: white;
+	margin-top: 2em;
+	border-style: dotted;
+	border-color: chartreuse;
+	border-width: 3px;
+	border-radius: 20px;
+	width: auto;
+	height: 400px;
+	
+}
+li {
+	color: white;
+	font-size: 2em;
+	margin-left: -10px !important;
+	padding-left: -10px !important;
+	font-family: Baskerville, "Palatino Linotype", Palatino, "Century Schoolbook L", "Times New Roman", "serif";
+	list-style-position: inside;
+	list-style-type: decimal;
+	text-align: left !important;
+	
+}
