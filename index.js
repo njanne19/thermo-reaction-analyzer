@@ -5,6 +5,9 @@ $(document).ready(function () {
 
 	var products = [];
 	var reactants = [];
+    var enthalpy = 0;
+    var entropy = 0;
+    var temp;
 
 	//Makes Enter = Click on Submit
 	$('.reaction').keydown(function (event) {
@@ -13,8 +16,15 @@ $(document).ready(function () {
         $('#presto').trigger('click');
     }
 	});
+    $('.temp').keydown(function (event) {
+    var keyCode = (event.keyCode ? event.keyCode : event.which);
+    if (keyCode === 13) {
+        $('#presto').trigger('click');
+    }
+	});
 
 	$('#presto').on("click", () => {
+    
         $('#therm').empty();
         $('#react').empty();
         $('#prod').empty();
@@ -105,6 +115,7 @@ $(document).ready(function () {
 			}
 			var totalSum = productSum - reactantSum;
 			console.log(totalSum);
+            enthalpy = totalSum;
 			//Need to make a jQuery reaction
 			$('#therm').append("<h3>" + "∆Hº = " + totalSum + "</h3>");
 		});
@@ -158,10 +169,50 @@ $(document).ready(function () {
 			var totalSum = productSum - reactantSum;
 			console.log(totalSum);
 			//Need to make a jQuery reaction
+            entropy = totalSum;
 			$('#therm').append("<h3>" + "∆Sº = " + totalSum.toFixed(2) + "</h3>");
-		});
+		}).then(() => { 
+        
+        //Sets value of temp for Gibbs 
+        if ($('.temp').val().length == 0) {
+            $('.temp').val(298 + "ºK");
+            temp = 298;
+        } else {
+            temp = $('.temp').val();
+        }
+        if (temp == 298) {
+            var gibbsLocal = enthalpy - 298*(entropy/1000);
+            $('#therm').append("<h3>" + "∆Gº @ 298K" + gibbsLocal + "</h3>"); 
+        } else {
+            var gibbsLocal25 = enthalpy - 298*(entropy/1000);
+            var gibbsLocalNew = enthalpy - temp*(entropy/1000);
+            $('#therm').append("<h3>" + "∆Gº @ 298K (25ºC): " + gibbsLocal25.toFixed(2) + "</h3>");
+            $('#therm').append("<h3>" + "∆Gº @ " + temp + "K (" + (temp-273) + "ºC): " + gibbsLocalNew.toFixed(2) + "</h3>");
+            
+        } 
+            var critical = enthalpy/(entropy/1000);
+            if (enthalpy > 0 && entropy < 0) {
+                $('#spon').append("<h3>" + "Never spontaneous regardless of temperature" + "<h3>");
+            } else if (enthalpy > 0 && entropy > 0) {
+               if (temp < critical) {
+                   $('#spon').append("<h3>" + "Not spontaneous at current temperature (" + temp + ") " + "<h3>")
+               }
+               $('#spon').append("<h3>" + "Always spontaneous above: " + critical.toFixed(2) + "ºK" + "<h3>");
+            } else if (enthalpy < 0 && entropy > 0) {
+                $('#spon').append("<h3>" + "Always spontaneous regardless of temperature" + "<h3>")
+            } else if (enthalpy < 0 && entropy < 0) {
+               if (temp < critical) {
+                   $('#spon').append("<h3>" + "Spontaneous at current temperature (" + temp + "Kº) " + "<h3>")
+               }
+               $('#spon').append("<h3>" + "Always spontaneous below: " + critical.toFixed(2) + "ºK" + "<h3>");
+            }
+        
+        
+        });
         
 	});
 
 
+    
+    
 });

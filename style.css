@@ -1,5 +1,6 @@
 body {
     background-color: black !important;
+    position: static !important;
 }
 
 .title {
@@ -94,13 +95,12 @@ h2 {
 	border-color: chartreuse;
 	border-width: 3px;
 	border-radius: 20px;
-	width: auto;
 	height: 400px;
 	
 }
 li {
 	color: white;
-	font-size: 4em;
+	font-size: 2em;
 	margin-left: -10px !important;
 	padding-left: -10px !important;
 	font-family: "Baloo", sans-serif;
@@ -109,12 +109,12 @@ li {
 	text-align: left !important;
 	
 }
-#therm {
+#therm, #spon {
     font-family: "Baloo", sans-serif;
     margin-left: 10px;
     padding-left: 10px;
     
 }
 h3 {
-    font-size: 4em !important;
+    font-size: 2em !important;
 }
