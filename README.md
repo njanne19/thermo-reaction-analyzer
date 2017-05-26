@@ -6,5 +6,5 @@ Separate both sides within compounds with a "plus sign (+)". Include coefficient
 
 This project is based off of two API's I created. They return JSON data and can be found here, and used on their own.
 
-<a href ="https://github.com/njanne19/entropy-API">Entropy API</a>
+<a href ="https://github.com/njanne19/entropy-API">Entropy API</a> <br>
 <a href ="https://github.com/njanne19/enthalpy-calculator">Enthalpy API</a>
