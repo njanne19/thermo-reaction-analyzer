@@ -1,6 +1,6 @@
 $(document).ready(function () {
 
-	/* Need to make: 1. Something that determines products(done), 2. Something that determines reactants(done), 3. Something that determines enthalpy, entropy, and Gibbs free, 4. Something that determines spontaneity */
+	/* Need to make: 1. Something that determines products(done), 2. Something that determines reactants(done), 3. Something that determines enthalpy, entropy, and Gibbs free with temperature, 4. Something that determines spontaneity */
 
 
 	var products = [];
@@ -15,8 +15,11 @@ $(document).ready(function () {
 	});
 
 	$('#presto').on("click", () => {
-
-		var input = $('.reaction').val();
+        $('#therm').empty();
+        $('#react').empty();
+        $('#prod').empty();
+        var input;
+        input = $('.reaction').val();
 		if(input.indexOf("=") >= 0) {
 			console.log(input);
 			reactants = input.split('=')[0];
@@ -103,9 +106,61 @@ $(document).ready(function () {
 			var totalSum = productSum - reactantSum;
 			console.log(totalSum);
 			//Need to make a jQuery reaction
-			$('#therm').append("<h3>" + "∆Hº of reaction = " + totalSum + "</h3>");
+			$('#therm').append("<h3>" + "∆Hº = " + totalSum + "</h3>");
 		});
 
+        
+        
+        // Now onto finding entropy
+        
+        var productDataEntropy = products.map((product, index) => {
+			return "";
+		});
+		var reactantDataEntropy = reactants.map((reactant, index) => {
+			return "";
+		});
+        
+        var getEntropyProducts = new Promise((resolve, reject) => {
+			products.forEach((product, index) => {
+				$.getJSON('https://entropy-api.herokuapp.com/' + products[index] + '/', (data) => {
+				}).then((data) => {
+					productDataEntropy[index] = data;
+					if(productDataEntropy.indexOf("") === -1) {
+						resolve();
+						console.log("Meow");
+					}
+				});
+			});
+		});
+
+		var getEntropyReactants = new Promise((resolve, reject) => {
+			reactants.forEach((reactant, index) => {
+				$.getJSON('https://entropy-api.herokuapp.com/' + reactants[index] + '/', (data) => {
+				}).then((data) => {
+					reactantDataEntropy[index] = data;
+					if (reactantDataEntropy.indexOf("") === -1) {
+					   resolve();
+					   console.log("Meow2");
+                    }
+				});
+			});
+		});
+        
+        Promise.all([getEntropyProducts, getEntropyReactants]).then(() => {
+			var productSum = 0;
+			for(var i = 0; i<productDataEntropy.length; i++) {
+				productSum += productDataEntropy[i].entropy;
+			}
+			var reactantSum = 0;
+			for (var i = 0; i<reactantDataEntropy.length; i++) {
+				reactantSum += reactantDataEntropy[i].entropy;
+			}
+			var totalSum = productSum - reactantSum;
+			console.log(totalSum);
+			//Need to make a jQuery reaction
+			$('#therm').append("<h3>" + "∆Sº = " + totalSum.toFixed(2) + "</h3>");
+		});
+        
 	});
 
 

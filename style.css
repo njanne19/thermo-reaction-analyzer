@@ -100,12 +100,21 @@ h2 {
 }
 li {
 	color: white;
-	font-size: 2em;
+	font-size: 4em;
 	margin-left: -10px !important;
 	padding-left: -10px !important;
-	font-family: Baskerville, "Palatino Linotype", Palatino, "Century Schoolbook L", "Times New Roman", "serif";
+	font-family: "Baloo", sans-serif;
 	list-style-position: inside;
 	list-style-type: decimal;
 	text-align: left !important;
 	
+}
+#therm {
+    font-family: "Baloo", sans-serif;
+    margin-left: 10px;
+    padding-left: 10px;
+    
+}
+h3 {
+    font-size: 4em !important;
 }
