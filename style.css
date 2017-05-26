@@ -1,6 +1,8 @@
 body {
     background-color: black !important;
-    position: static !important;
+    height: 100%;
+    white-space: nowrap;
+    width: 100%;
 }
 
 .title {
@@ -96,7 +98,7 @@ h2 {
 	border-width: 3px;
 	border-radius: 20px;
 	height: 400px;
-	
+    word-wrap: break-word!important;
 }
 li {
 	color: white;
@@ -117,4 +119,25 @@ li {
 }
 h3 {
     font-size: 2em !important;
+}
+
+footer {
+  white-space: nowrap;
+  position: fixed;
+  background-color: black;
+  color: white;
+  font-family: "Baloo", cursive;
+  width: 100%;
+  margin-left: -5;
+  bottom: 0;
+  left: 0px;
+  padding-bottom: 5px;
+}
+#wrapper {
+    height: 100%;
+    position: relative;
+}
+a.fawesome, f.awesome:hover, f.awesome:focus, f.awesome:active {
+  text-decoration: none;
+  color: white;
 }
