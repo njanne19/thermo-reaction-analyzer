@@ -1,7 +1,6 @@
 # Instructions on how to use the project
 
-## use the form: PRODUCTS = REACTANTS <br>
-YOU MUST ADD a (form of matter) WITH EVERY COMPOUND (e.g. Fe(s))
+## Use the form: Products = Reactants <br> YOU MUST ADD a (form of matter) WITH EVERY COMPOUND (e.g. Fe(s))
 
 Separate both sides within compounds with a "plus sign (+)". Include coefficients at the front of each compound. This project does not check for a balanced chemical equation.
 
