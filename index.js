@@ -28,6 +28,7 @@ $(document).ready(function () {
         $('#therm').empty();
         $('#react').empty();
         $('#prod').empty();
+        $('#spon').empty();
         var input;
         input = $('.reaction').val();
 		if(input.indexOf("=") >= 0) {
