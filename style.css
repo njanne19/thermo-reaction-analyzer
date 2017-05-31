@@ -141,3 +141,9 @@ a.fawesome, f.awesome:hover, f.awesome:focus, f.awesome:active {
   text-decoration: none;
   color: white;
 }
+.example {
+    text-align: center; 
+    font-size: 0.9em;
+    font-family: "Baloo", cursive;
+    color: lightgrey;
+}
