@@ -64,25 +64,18 @@ body {
 	text-align: center;
 }
 #presto {
-	display: inline;
 	margin-left: 1.5em;
 	background-color: inherit;
-	font-size: 2em !important;
+	font-size: 24px !important;
+    text-align: center;
 	border-color: chartreuse;
-	border-style: dotted;
-	border-radius: 20px;
-	color: white;
+    border-width: 7px;
+	border-style: solid;
+	border-radius: 30px;
+    height: 2.4em;
+	color: darkgrey;
 	width: 5em;
-	border-width: 2px;
-	font-family: "Lobster", sans-serif;
-	transition-duration: 0.5s;
-	transition-timing-function: ease-in-out;
-}
-#presto:hover {
-	transform: rotate(360deg);
-	font-size: 2.5em!important;
-	background-color: white;
-	color: black;
+	font-family: "VT323", sans-serif;
 }
 
 h2 {
